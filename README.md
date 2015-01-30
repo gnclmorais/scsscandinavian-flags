@@ -51,3 +51,30 @@ Countries
 https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=scandinavian%20flag%20rgb
 Colours
 - Denmark
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Basic technique
+- A single HTML element for the flag itself, a `div`
+- A single class addition will show the flag, like `.flag-norway`
+- Set `div`’s background steps to set the background itself _and_ any vertical line
+- The horizontal line will be made with the `div`’s `::after` pseudo-element
+
+## Some problems
+- For 2-coloured flags, I thought about using `::before` for the vertical and `::after` for the horizontal
+- However, for 3-coloured flags, I needed more pseudo-elements than I had available
+
