@@ -1,90 +1,103 @@
-Inspired by 2015’s [Mönki Gras](http://monkigras.com) conference,
-_‘Nordic Craft Culture and Tech’_, trying to replicate the main 
-Scandinavian national flags with only CSS.
+CSS-only implementations of the Scandinavian countries’ national flags.
 
-# The Scandinavian Cross
+## Backstory
+Back from 2015’s [Mönki Gras](http://monkigras.com) conference, its 
+_‘Nordic Craft Culture and Tech’_ theme resonated with me. After a couple of 
+days of those ever-present flags with the Scandinavian cross, I think I fell 
+in love with its simplicity and shared history.
 
-Somre remarks collected about dimensions & proportions:
-- A red flag with a white cross with no split end. The white cross must be 1/7 of the flag's height. The two first fields must be square in form and the two outer fields must be 6/4 lengths of those.
-
-
-
-
-Dimensions
-- Inner cross width:  1/7 of height
-- The 2 square:       3/7 of height
-- The other 2 pieces: 6/4 of the squares
+Since the flag designs are quite simple and similar, I decided to try to 
+replicate them using only CSS (or Sass, more precisely).
 
 
-Countries
-* Denmark (Dannebrog)
-  - Colours:
-    - White
-    - Red (Pantone 186C, R:210  G:16  B:52, C:11  M:100 Y:85  K:2)
-  - Sass: rgb(210, 16, 52)
-* Norway
-  - Wiki: https://commons.wikimedia.org/wiki/File:Flag_of_Norway.svg
-  - Colours:
-    - White
-    - Blue: #002868
-    - Red: #EF2B2D
-* Iceland
-  - Wiki: https://en.wikipedia.org/wiki/Flag_of_Iceland#Colors_of_the_flag
-  - Colours:
-    - White
-    - Blue: (CMYK 100, 69, 0, 11.5; #0048E0)
-    - Red: (CMYK 0, 94, 100, 0; #FF0F00)
-* Sweden
-  - Colours:
-    - Blue
-      - Sass: rgb(0, 127, 229)
-    - Yellow
-      - Sass: rgb(255, 204, 0)
-* Finland
-  - Wiki: https://en.wikipedia.org/wiki/Flag_of_Finland#Colours
-  - Colours
-    - White
-    - Blue (Pantone 294C, R=24, G=68, B=126)
-      - Sass: rgb(24, 68, 126)
-
-
-https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=scandinavian%20flag%20rgb
-Colours
+## Flags
+Currently, all the 5 main Scandinavian flags are available:
 - Denmark
+- Finland
+- Iceland
+- Norway
+- Sweden
+
+
+## Design
+### Denmark
+> A red field charged with a white cross extending to the edges; the vertical part of the cross is shifted to the hoist side. Dimensions: 3:1:3 width / 3:1:4.5 to 3:1:5.25 length.
+> — _from [Wikipedia](https://en.wikipedia.org/wiki/Flag_of_Denmark)_
+
+__Ratio:__ 28:37  
+__Vertical proportions:__ 12:4:12  
+__Horizontal proportions:__ 12:4:21  
+__Colours:__ red (Pantone 186C, R:210 G:16 B:52), white  
+
+### Finland
+> Sea-blue Nordic cross on white field.
+> — _from [Wikipedia](https://en.wikipedia.org/wiki/Flag_of_Finland)_
+
+__Ratio:__ 11:18  
+__Vertical proportions:__ 4:3:4  
+__Horizontal proportions:__ 5:3:10  
+__Colours:__ white, blue (Pantone 2945C, R:0 G:82 B:165)  
+
+### Iceland
+> A white-fimbriated red Nordic cross on a blue field
+> — _from [Wikipedia](https://en.wikipedia.org/wiki/Flag_of_Iceland)_
+
+__Ratio:__ 18:25   
+__Vertical proportions:__ 7:1:2:1:7  
+__Horizontal proportions:__ 7:1:2:1:14  
+__Colours:__ blue (Pantone 2945C, R:0 G:82 B:165), white, red (Pantone 1795, R:215  G:31  B:41)  
+
+### Norway
+> A white-fimbriated blue Nordic cross on a red field
+> — _from [Wikipedia](https://en.wikipedia.org/wiki/Flag_of_Norway)_
+
+__Ratio:__ 8:11   
+__Vertical proportions:__ 6:1:2:1:6  
+__Horizontal proportions:__ 6:1:2:1:12  
+__Colours:__ red (Pantone 186C, R:210 G:16 B:52), white, blue (Pantone 301, R:0 G:85 B:155)  
+
+### Sweden
+> Blue with a yellow/gold Scandinavian cross that extends to the edges of the flag. Dimensions: 5:2:9 horizontally and 4:2:4 vertically.
+> — _from [Wikipedia](https://en.wikipedia.org/wiki/Flag_of_Sweden)_
+
+__Ratio:__ 5:8   
+__Vertical proportions:__ 4:2:4  
+__Horizontal proportions:__ 5:2:9  
+__Colours:__ blue (Pantone 301, R:0 G:85 B:155), yellow (Pantone 116C, R:255 G:206 B:0)  
 
 
 ## Basic technique
-- A single HTML element for the flag itself, a `div`
-- A single class addition will show the flag, like `.flag-norway`
-- Set `div`’s background steps to set the background itself _and_ any vertical line
-- The horizontal line will be made with the `div`’s `::after` pseudo-element
+- A single HTML element for the flag itself, a `div`.
+- A single class addition will show the flag, like `.flag-norway`, for example.
+- On 2-colours flags, the `::before` pseudo-element is the vertical bar and 
+`::after` is the horizontal bar.
+- On 3-colours flags, a different technique is employed: the vertical bar is
+achieved setting a linear gradient as the `<div>`’s background, using hard stops
+to set the limits of each colour; the `::after` pseudo-element is reponsible
+for the inner horizontal bar, and the outer horizontal bar is the `::before`,
+with a transparent bit to not cut the vertical bar.
 
-
-## Some problems
-- For 2-coloured flags, I thought about using `::before` for the vertical and `::after` for the horizontal
-- However, for 3-coloured flags, I needed more pseudo-elements than I had available
-
-
-## Proportions
-
-### World
-https://en.wikipedia.org/wiki/List_of_countries_by_proportions_of_national_flags
-http://www.crwflags.com/fotw/flags/xf-size.html
-
-### Denmark
-http://www.crwflags.com/fotw/flags/dk.html
-
-### Sweden
-http://www.crwflags.com/fotw/flags/se.html
-
-
-
+#### Why not use the same technique for both?
+I _could_, in fact, use the latter technique for both situations (flags with 
+2 or 3 colours), but I prefer to have two different approaches for two different
+problems: when 2 pseudo-elements are enough and when you (apparently) need more.
 
 
 ## Compile
+I have included a Makefile with the following targets:
+- `build` — Default action, compiles the Sass code & minifies the resulting CSS.
+- `watch` — Compiles the Sass code & minifies the resulting CSS, watching the
+project’s SCSS files for modifications and repeating the process.
+- `test` — Helps with debugging; runs `build`, opens `test/index.html` (a kind
+of playground page) and then runs `watch`.
+- `clean` — Removes any disposable folder, like `css/` and `.sass-cache/`.
 
-To get the equivalent CSS code, run the following command in the root of this project:
 
-    sass --watch scss/main.scss:style.css --style compressed
-    
-Add `--style compressed` at the end of the command if you want the CSS minimised.
+## Further reading
+- [History and specifications of Nordic flags](http://www.norden.org/en/fakta-om-norden-1/the-nordic-flags)
+- [CRWFlags – Denmark](http://www.crwflags.com/fotw/flags/dk.html)
+- [CRWFlags – Finland](http://www.crwflags.com/fotw/flags/fi.html)
+- [CRWFlags – Iceland](http://www.crwflags.com/fotw/flags/is.html)
+- [CRWFlags – Norway](http://www.crwflags.com/fotw/flags/no.html)
+- [CRWFlags – Sweden](http://www.crwflags.com/fotw/flags/se.html)
+- [Wikipedia – List of national flags’ aspect ratio](https://en.wikipedia.org/wiki/List_of_countries_by_proportions_of_national_flags)
