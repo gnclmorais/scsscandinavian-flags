@@ -1,2 +1,6 @@
+# From master branch
+scsscandinavian-flags/
+!scsscandinavian-flags/dist/
+
 # Sass
 .sass-cache/
