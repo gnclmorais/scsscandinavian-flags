@@ -1,5 +1,8 @@
 # This is a Makefile!
 
+build:
+	sass scss/main.scss:css/style.css
+
 watch:
 	sass --watch scss/main.scss:css/style.css
 
