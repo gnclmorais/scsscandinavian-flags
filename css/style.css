@@ -1,0 +1,138 @@
+/******************************************************************************\
+|* UTILITIES
+|* Mixins and other utilities
+\******************************************************************************/
+/**
+ * 2-coolour flags
+ */
+/**
+ * 3-coolour flags
+ */
+/**
+ * Sum
+ * More info on http://hugogiraudel.com/2013/10/09/advanced-sass-list-functions-again/
+ */
+/******************************************************************************\
+|* BASE
+|* General dimensions and other definitions
+\******************************************************************************/
+/**
+ * Normalise section (minimal)
+ */
+body {
+  margin: 0; }
+
+/**
+ * Base settings
+ */
+.flag-denmark {
+  width: 528.57143px;
+  height: 400px;
+  position: relative;
+  background-color: #d21034; }
+  .flag-denmark::before, .flag-denmark::after {
+    background: #fff;
+    content: "";
+    display: block;
+    position: absolute; }
+  .flag-denmark::before {
+    width: 43.24324px;
+    top: 0;
+    left: 129.72973px;
+    bottom: 0; }
+  .flag-denmark::after {
+    height: 43.24324px;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -21.62162px; }
+
+.flag-sweden {
+  width: 640px;
+  height: 400px;
+  position: relative;
+  background-color: #007fe5; }
+  .flag-sweden::before, .flag-sweden::after {
+    background: #ffcc00;
+    content: "";
+    display: block;
+    position: absolute; }
+  .flag-sweden::before {
+    width: 50px;
+    top: 0;
+    left: 125px;
+    bottom: 0; }
+  .flag-sweden::after {
+    height: 50px;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -25px; }
+
+.flag-finland {
+  width: 654.54545px;
+  height: 400px;
+  position: relative;
+  background-color: #fff; }
+  .flag-finland::before, .flag-finland::after {
+    background: #18447e;
+    content: "";
+    display: block;
+    position: absolute; }
+  .flag-finland::before {
+    width: 66.66667px;
+    top: 0;
+    left: 111.11111px;
+    bottom: 0; }
+  .flag-finland::after {
+    height: 66.66667px;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -33.33333px; }
+
+.flag-iceland {
+  width: 555.55556px;
+  height: 400px;
+  position: relative;
+  background-color: #0048E0;
+  background: linear-gradient(to right, #0048E0 112px, #fff 112px, #fff 128px, #ff0f00 128px, #ff0f00 160px, #fff 160px, #fff 176px, #0048E0 176px, #0048E0); }
+  .flag-iceland::before, .flag-iceland::after {
+    content: "";
+    display: block;
+    width: 555.55556px;
+    position: absolute;
+    top: 50%;
+    left: 0; }
+  .flag-iceland::before {
+    height: 64px;
+    margin-top: -32px;
+    background: linear-gradient(to right, #fff 128px, transparent 128px, transparent 160px, #fff 160px, #fff); }
+  .flag-iceland::after {
+    height: 32px;
+    margin-top: -16px;
+    background-color: #ff0f00; }
+
+.flag-norway {
+  width: 550px;
+  height: 400px;
+  position: relative;
+  background-color: #EF2B2D;
+  background: linear-gradient(to right, #EF2B2D 109.09091px, #fff 109.09091px, #fff 127.27273px, #002868 127.27273px, #002868 163.63636px, #fff 163.63636px, #fff 181.81818px, #EF2B2D 181.81818px, #EF2B2D); }
+  .flag-norway::before, .flag-norway::after {
+    content: "";
+    display: block;
+    width: 550px;
+    position: absolute;
+    top: 50%;
+    left: 0; }
+  .flag-norway::before {
+    height: 72.72727px;
+    margin-top: -36.36364px;
+    background: linear-gradient(to right, #fff 127.27273px, transparent 127.27273px, transparent 163.63636px, #fff 163.63636px, #fff); }
+  .flag-norway::after {
+    height: 36.36364px;
+    margin-top: -18.18182px;
+    background-color: #002868; }
+
+/*# sourceMappingURL=style.css.map */

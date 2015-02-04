@@ -1,0 +1,17 @@
+$denmark-white: #fff;
+$denmark-red:   rgb(210, 16, 52);
+
+.flag-denmark {
+    // Proportions
+    $horizontal: 12 4 21;
+    $vertical:   12 4 12;
+    
+    // Background
+    @include flag-2-colours(
+        $height-global,
+        $denmark-red,
+        $denmark-white,
+        $horizontal,
+        $vertical
+    );
+}

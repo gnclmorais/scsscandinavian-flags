@@ -1,0 +1,19 @@
+$iceland-white: #fff;
+$iceland-blue:  #0048E0;
+$iceland-red:   #ff0f00;
+
+.flag-iceland {
+    // Proportions
+    $horizontal: 7 1 2 1 14;
+    $vertical:   7 1 2 1 7;
+    
+    // Background
+    @include flag-3-colours(
+        $height-global,
+        $iceland-blue,
+        $iceland-white,
+        $iceland-red,
+        $horizontal,
+        $vertical
+    );
+}

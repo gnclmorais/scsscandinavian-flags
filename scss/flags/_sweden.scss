@@ -1,0 +1,17 @@
+$sweden-yellow: rgb(255, 204, 0);
+$sweden-blue:   rgb(0, 127, 229);
+
+.flag-sweden {
+    // Proportions
+    $horizontal: 5 2 9;
+    $vertical:   4 2 4;
+    
+    // Background
+    @include flag-2-colours(
+        $height-global,
+        $sweden-blue,
+        $sweden-yellow,
+        $horizontal,
+        $vertical
+    );
+}

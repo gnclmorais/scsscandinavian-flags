@@ -1,0 +1,19 @@
+$norway-white: #fff;
+$norway-blue:  #002868;
+$norway-red:   #EF2B2D;
+
+.flag-norway {
+    // Proportions
+    $horizontal: 6 1 2 1 12;
+    $vertical:   6 1 2 1 6;
+    
+    // Background
+    @include flag-3-colours(
+        $height-global,
+        $norway-red,
+        $norway-white,
+        $norway-blue,
+        $horizontal,
+        $vertical
+    );
+}

@@ -53,28 +53,38 @@ Colours
 - Denmark
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Basic technique
 - A single HTML element for the flag itself, a `div`
 - A single class addition will show the flag, like `.flag-norway`
 - Set `div`’s background steps to set the background itself _and_ any vertical line
 - The horizontal line will be made with the `div`’s `::after` pseudo-element
 
+
 ## Some problems
 - For 2-coloured flags, I thought about using `::before` for the vertical and `::after` for the horizontal
 - However, for 3-coloured flags, I needed more pseudo-elements than I had available
 
+
+## Proportions
+
+### World
+https://en.wikipedia.org/wiki/List_of_countries_by_proportions_of_national_flags
+http://www.crwflags.com/fotw/flags/xf-size.html
+
+### Denmark
+http://www.crwflags.com/fotw/flags/dk.html
+
+### Sweden
+http://www.crwflags.com/fotw/flags/se.html
+
+
+
+
+
+## Compile
+
+To get the equivalent CSS code, run the following command in the root of this project:
+
+    sass --watch scss/main.scss:style.css --style compressed
+    
+Add `--style compressed` at the end of the command if you want the CSS minimised.

@@ -1,0 +1,130 @@
+/******************************************************************************\
+|* UTILITIES
+|* Mixins and other utilities
+\******************************************************************************/
+
+/**
+ * 2-coolour flags
+ */
+@mixin flag-2-colours($height, $colourBg, $colourCross, $horizontal, $vertical) {
+    // Required calculations
+    $width: sum($horizontal) * $height / sum($vertical);
+    $hoistGap: nth($horizontal, 1) * $height / sum($horizontal);
+    $crossWidth: nth($vertical, 2) * $height / sum($horizontal);
+    
+    // Base settings
+    width: $width;
+    height: $height;
+    position: relative;
+    background-color: $colourBg;
+    
+    &::before,
+    &::after {
+        background: $colourCross;
+        content: "";
+        display: block;
+        position: absolute;
+    }
+    
+    &::before {
+        width: $crossWidth;
+        top: 0;
+        left: $hoistGap;
+        bottom: 0;
+    }
+    
+    &::after {
+        height: $crossWidth;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin-top: -$crossWidth / 2;
+    }
+}
+
+/**
+ * 3-coolour flags
+ */
+@mixin flag-3-colours($height, $colourBg, $colourCrossOuter, $colourCrossInner, $horizontal, $vertical) {
+    // Required calculations
+    $width: sum($horizontal) * $height / sum($vertical);
+    $hoistGap: nth($horizontal, 1) * $height / sum($horizontal);
+    $outerWidth: nth($vertical, 2) * $height / sum($horizontal);
+    $innerWidth: nth($vertical, 3) * $height / sum($horizontal);
+    
+    // Background stops
+    $first: $hoistGap + $outerWidth;
+    $second: $hoistGap + $outerWidth + $innerWidth;
+    $third: $hoistGap + $outerWidth + $innerWidth + $outerWidth;
+    
+    // Base settings
+    width: $width;
+    height: $height;
+    position: relative;
+    background-color: $colourBg;
+    background: linear-gradient(
+        to right,
+        $colourBg $hoistGap,
+        $colourCrossOuter $hoistGap,
+        $colourCrossOuter $first,
+        $colourCrossInner $first,
+        $colourCrossInner $second,
+        $colourCrossOuter $second,
+        $colourCrossOuter $third,
+        $colourBg $third,
+        $colourBg
+    );
+
+    
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        width: $width;
+        position: absolute;
+        top: 50%;
+        left: 0;
+    }
+    
+    &::before {
+        height: $innerWidth + $outerWidth * 2;
+        margin-top: -($innerWidth / 2 + $outerWidth);
+        background: linear-gradient(
+            to right,
+            $colourCrossOuter $first,
+            transparent $first,
+            transparent $second,
+            $colourCrossOuter $second,
+            $colourCrossOuter
+        );
+    }
+    
+    &::after {
+        height: $innerWidth;
+        margin-top: -($innerWidth / 2);
+        background-color: $colourCrossInner;
+    }
+}
+
+
+
+/**
+ * Sum
+ * More info on http://hugogiraudel.com/2013/10/09/advanced-sass-list-functions-again/
+ */
+@function sum($list, $force: false) {
+  $result: 0;
+  
+  @each $item in $list {
+    @if type-of($item) == number {
+      @if $force and unit($item) {
+        $item: $item / ($item * 0 + 1);
+      }
+      @if unitless($item) {
+        $result: $result + $item;
+      }
+    }
+  }
+  
+  @return $result;
+}

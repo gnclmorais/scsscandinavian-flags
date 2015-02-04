@@ -1,0 +1,17 @@
+$finland-white: #fff;
+$finland-blue:  rgb(24, 68, 126);
+
+.flag-finland {
+    // Proportions
+    $horizontal: 5 3 10;
+    $vertical:   4 3 4;
+    
+    // Background
+    @include flag-2-colours(
+        $height-global,
+        $finland-white,
+        $finland-blue,
+        $horizontal,
+        $vertical
+    );
+}
