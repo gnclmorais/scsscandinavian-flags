@@ -1,10 +1,8 @@
-# This is a Makefile!
-
 build:
-	sass scss/main.scss:css/style.css --style compressed
+	sass scss/main.scss:dist/flags.css --style compressed
 
 watch:
-	sass --watch scss/main.scss:css/style.css --style compressed
+	sass --watch scss/main.scss:dist/flags.css --style compressed
 
 test:
 	make
@@ -12,7 +10,7 @@ test:
 	make watch
 
 clean:
-	rm -rf css/ .sass-cache/
+	rm -rf dist/ .sass-cache/
 
 # More info about this hack: http://chrisadams.me.uk/2012/10/21/understanding-make/
 .PHONY: test
