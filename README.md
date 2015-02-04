@@ -82,6 +82,13 @@ I _could_, in fact, use the latter technique for both situations (flags with
 2 or 3 colours), but I prefer to have two different approaches for two different
 problems: when 2 pseudo-elements are enough and when you (apparently) need more.
 
+### Constraints
+Currently, all the dimensions & ratios are dependent on a single dimension,
+which is the height of the final flags (identified as `$height-global` on the
+file `_base.css`). I would like to change this, but I couldn’t find a way to
+do so, CSS-only. So, if you want flags with different dimensions, just change
+that variable to the height you want, compile the Sass and use the CSS.
+
 
 ## Compile
 I have included a Makefile with the following targets:
