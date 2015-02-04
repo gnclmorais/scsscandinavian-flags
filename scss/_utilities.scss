@@ -4,13 +4,14 @@
 \******************************************************************************/
 
 /**
- * 2-coolour flags
+ * 2-colour flags
  */
 @mixin flag-2-colours($height, $colourBg, $colourCross, $horizontal, $vertical) {
     // Required calculations
-    $width: sum($horizontal) * $height / sum($vertical);
-    $hoistGap: nth($horizontal, 1) * $width / sum($horizontal);
-    $crossWidth: nth($horizontal, 2) * $width / sum($horizontal);
+    $sumHorizontal: sum($horizontal);
+    $width: $sumHorizontal * $height / sum($vertical);
+    $hoistGap: nth($horizontal, 1) * $width / $sumHorizontal;
+    $crossWidth: nth($horizontal, 2) * $width / $sumHorizontal;
     
     // Base settings
     width: $width;
@@ -18,14 +19,7 @@
     position: relative;
     background-color: $colourBg;
     
-    &::before,
-    &::after {
-        background: $colourCross;
-        content: "";
-        display: block;
-        position: absolute;
-    }
-    
+    // Vertical bar
     &::before {
         width: $crossWidth;
         top: 0;
@@ -33,35 +27,45 @@
         bottom: 0;
     }
     
+    // Horizontal bar
     &::after {
         height: $crossWidth;
+        top: 50%;
         left: 0;
         right: 0;
-        top: 50%;
         margin-top: -$crossWidth / 2;
+    }
+    
+    // Common settings for both pseudo-elements
+    &::before,
+    &::after {
+        background: $colourCross;
+        content: "";
+        display: block;
+        position: absolute;
     }
 }
 
 /**
- * 3-coolour flags
+ * 3-colour flags
  */
 @mixin flag-3-colours($height, $colourBg, $colourCrossOuter, $colourCrossInner, $horizontal, $vertical) {
     // Required calculations
-    $width: sum($horizontal) * $height / sum($vertical);
-    $hoistGap: nth($horizontal, 1) * $width / sum($horizontal);
-    $outerWidth: nth($vertical, 2) * $width / sum($horizontal);
-    $innerWidth: nth($vertical, 3) * $width / sum($horizontal);
+    $sumHorizontal: sum($horizontal);
+    $width: $sumHorizontal * $height / sum($vertical);
+    $hoistGap: nth($horizontal, 1) * $width / $sumHorizontal;
+    $outerWidth: nth($vertical, 2) * $width / $sumHorizontal;
+    $innerWidth: nth($vertical, 3) * $width / $sumHorizontal;
     
-    // Background stops
-    $first: $hoistGap + $outerWidth;
-    $second: $hoistGap + $outerWidth + $innerWidth;
-    $third: $hoistGap + $outerWidth + $innerWidth + $outerWidth;
+    // Background colour stops
+    $first:  $hoistGap + $outerWidth;
+    $second: $first + $innerWidth;
+    $third:  $second + $outerWidth;
     
     // Base settings
     width: $width;
     height: $height;
     position: relative;
-    background-color: $colourBg;
     background: linear-gradient(
         to right,
         $colourBg $hoistGap,
@@ -73,19 +77,9 @@
         $colourCrossOuter $third,
         $colourBg $third,
         $colourBg
-    );
-
+    ); // Hard colour stops composes the background and the vertical bar.
     
-    &::before,
-    &::after {
-        content: "";
-        display: block;
-        width: $width;
-        position: absolute;
-        top: 50%;
-        left: 0;
-    }
-    
+    // Outer vertical bar
     &::before {
         height: $innerWidth + $outerWidth * 2;
         margin-top: -($innerWidth / 2 + $outerWidth);
@@ -96,35 +90,46 @@
             transparent $second,
             $colourCrossOuter $second,
             $colourCrossOuter
-        );
+        ); // A transparent bit keeps the outer section from cutting the inner.
     }
     
+    // Inner vertical bar
     &::after {
         height: $innerWidth;
         margin-top: -($innerWidth / 2);
         background-color: $colourCrossInner;
     }
+
+    // Common settings for both pseudo-elements
+    &::before,
+    &::after {
+        content: "";
+        display: block;
+        width: $width;
+        position: absolute;
+        top: 50%;
+        left: 0;
+    }
 }
 
 
-
 /**
- * Sum
+ * Sum - Sass function
  * More info on http://hugogiraudel.com/2013/10/09/advanced-sass-list-functions-again/
  */
 @function sum($list, $force: false) {
-  $result: 0;
-  
-  @each $item in $list {
-    @if type-of($item) == number {
-      @if $force and unit($item) {
-        $item: $item / ($item * 0 + 1);
-      }
-      @if unitless($item) {
-        $result: $result + $item;
-      }
+    $result: 0;
+
+    @each $item in $list {
+        @if type-of($item) == number {
+            @if $force and unit($item) {
+                $item: $item / ($item * 0 + 1);
+            }
+            @if unitless($item) {
+                $result: $result + $item;
+            }
+        }
     }
-  }
-  
-  @return $result;
+
+    @return $result;
 }

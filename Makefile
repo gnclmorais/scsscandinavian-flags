@@ -1,10 +1,10 @@
 # This is a Makefile!
 
 build:
-	sass scss/main.scss:css/style.css
+	sass scss/main.scss:css/style.css --style compressed
 
 watch:
-	sass --watch scss/main.scss:css/style.css
+	sass --watch scss/main.scss:css/style.css --style compressed
 
 test:
 	make
