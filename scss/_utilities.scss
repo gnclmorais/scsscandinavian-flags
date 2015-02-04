@@ -9,8 +9,8 @@
 @mixin flag-2-colours($height, $colourBg, $colourCross, $horizontal, $vertical) {
     // Required calculations
     $width: sum($horizontal) * $height / sum($vertical);
-    $hoistGap: nth($horizontal, 1) * $height / sum($horizontal);
-    $crossWidth: nth($vertical, 2) * $height / sum($horizontal);
+    $hoistGap: nth($horizontal, 1) * $width / sum($horizontal);
+    $crossWidth: nth($horizontal, 2) * $width / sum($horizontal);
     
     // Base settings
     width: $width;
@@ -48,9 +48,9 @@
 @mixin flag-3-colours($height, $colourBg, $colourCrossOuter, $colourCrossInner, $horizontal, $vertical) {
     // Required calculations
     $width: sum($horizontal) * $height / sum($vertical);
-    $hoistGap: nth($horizontal, 1) * $height / sum($horizontal);
-    $outerWidth: nth($vertical, 2) * $height / sum($horizontal);
-    $innerWidth: nth($vertical, 3) * $height / sum($horizontal);
+    $hoistGap: nth($horizontal, 1) * $width / sum($horizontal);
+    $outerWidth: nth($vertical, 2) * $width / sum($horizontal);
+    $innerWidth: nth($vertical, 3) * $width / sum($horizontal);
     
     // Background stops
     $first: $hoistGap + $outerWidth;
