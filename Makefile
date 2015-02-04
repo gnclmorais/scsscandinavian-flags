@@ -7,8 +7,8 @@ watch:
 	sass --watch scss/main.scss:css/style.css
 
 test:
-	sass scss/main.scss:css/style.css
-	open "test/overview.html"
+	make
+	open "test/index.html"
 	make watch
 
 clean:
