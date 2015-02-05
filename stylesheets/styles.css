@@ -49,6 +49,10 @@ p {
     margin: 2em 0;
 }
 
+    .compatibility {
+        opacity: .75;
+    }
+
 a {
     color: #d21034;
 }
