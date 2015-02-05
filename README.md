@@ -91,6 +91,13 @@ file `_base.css`). I would like to change this, but I couldn’t find a way to
 do so, CSS-only. So, if you want flags with different dimensions, just change
 that variable to the height you want, compile the Sass and use the CSS.
 
+### Browser compatibility
+All flags work on __Opera 15+, Chrome 25+, IE 10+, Firefox 16+, Safari 6.1+, iOS 7+, Android 4.4+__.
+Flags with three colours (Norway and Iceland) don’t work on IE 8 and 9 because
+of the gradients technique used. I tried to keep the CSS generated simple and
+minimal, so if you want to broad the compatibility of this project, checkout
+[CSS-Tricks](http://css-tricks.com/css3-gradients/) for more info.
+
 
 ## Compile
 I have included a Makefile with the following targets:
